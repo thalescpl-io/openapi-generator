@@ -1,11 +1,7 @@
 {{#hasEnums}}
 
-{{^stringEnums}}
-export namespace {{classname}} {
-{{/stringEnums}}
 {{#vars}}
     {{#isEnum}}
-{{#stringEnums}}
 export enum {{classname}}{{enumName}} {
 {{#allowableValues}}
 {{#enumVars}}
@@ -13,18 +9,6 @@ export enum {{classname}}{{enumName}} {
 {{/enumVars}}
 {{/allowableValues}}
 };
-{{/stringEnums}}
-{{^stringEnums}}
-    export type {{enumName}} = {{#allowableValues}}{{#enumVars}}{{{value}}}{{^-last}} | {{/-last}}{{/enumVars}}{{/allowableValues}};
-    export const {{enumName}} = {
-    {{#allowableValues}}
-    {{#enumVars}}
-        {{name}}: {{{value}}} as {{enumName}}{{^-last}},{{/-last}}
-    {{/enumVars}}
-    {{/allowableValues}}
-    };
-{{/stringEnums}}
     {{/isEnum}}
 {{/vars}}
-{{^stringEnums}}}{{/stringEnums}}
 {{/hasEnums}}
