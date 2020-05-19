@@ -22,16 +22,13 @@ export interface Order {
     /**
      * Order Status
      */
-    status?: Order.StatusEnum;
+    status?: OrderStatusEnum;
     complete?: boolean;
 }
-export namespace Order {
-    export type StatusEnum = 'placed' | 'approved' | 'delivered';
-    export const StatusEnum = {
-        Placed: 'placed' as StatusEnum,
-        Approved: 'approved' as StatusEnum,
-        Delivered: 'delivered' as StatusEnum
-    };
-}
+export enum OrderStatusEnum {
+    Placed = 'placed',
+    Approved = 'approved',
+    Delivered = 'delivered'
+};
 
 
