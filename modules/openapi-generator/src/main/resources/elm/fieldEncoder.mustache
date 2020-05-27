@@ -1,6 +1,6 @@
 {{#lambda.removeWhitespace}}
-{{#isDateTime}}Api.Time.encodeDateTime{{/isDateTime}}
-{{#isDate}}Api.Time.encodeDate{{/isDate}}
+{{#isDateTime}}{{modelPackage}}.Time.encodeDateTime{{/isDateTime}}
+{{#isDate}}{{modelPackage}}.Time.encodeDate{{/isDate}}
 {{#isByteArray}}Json.Encode.string{{/isByteArray}}
 {{#isBinary}}Json.Decode.string{{/isBinary}}
 {{#isString}}{{^isEnum}}{{^isUuid}}Json.Encode.string{{/isUuid}}{{/isEnum}}{{/isString}}

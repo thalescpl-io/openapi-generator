@@ -1,4 +1,4 @@
-module Api exposing
+module {{modelPackage}} exposing
     ( Request
     , request
     , send
@@ -11,11 +11,13 @@ module Api exposing
     , withBearerToken
     , withHeader
     , withHeaders
+    , withOAuthToken
     )
 
 import Http
 import Json.Decode
 import Json.Encode
+import OAuth
 import Task
 import Url.Builder
 
@@ -112,6 +114,9 @@ withBearerToken : String -> Request a -> Request a
 withBearerToken token (Request req) =
     Request { req | headers = Http.header "Authorization" ("Bearer " ++ token) :: req.headers }
 
+withOAuthToken : OAuth.Token -> Request a -> Request a
+withOAuthToken token (Request req) =
+    Request { req | headers = Http.header "Authorization" ("Bearer " ++ (OAuth.tokenToString token)) :: req.headers }
 
 withHeader : String -> String -> Request a -> Request a
 withHeader key value (Request req) =
