@@ -116,7 +116,7 @@ withBearerToken token (Request req) =
 
 withOAuthToken : OAuth.Token -> Request a -> Request a
 withOAuthToken token (Request req) =
-    Request { req | headers = Http.header "Authorization" ("Bearer " ++ (OAuth.tokenToString token)) :: req.headers }
+    Request { req | headers = Http.header "Authorization" (OAuth.tokenToString token) :: req.headers }
 
 withHeader : String -> String -> Request a -> Request a
 withHeader key value (Request req) =
